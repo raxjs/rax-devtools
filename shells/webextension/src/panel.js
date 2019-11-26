@@ -61,13 +61,13 @@ var config: Props = {
     };
   },
   getNewSelection(bridge) {
-    chrome.devtools.inspectedWindow.eval('window.__REACT_DEVTOOLS_GLOBAL_HOOK__.$0 = $0');
+    chrome.devtools.inspectedWindow.eval('window.__RAX_DEVTOOLS_GLOBAL_HOOK__.$0 = $0');
     bridge.send('checkSelection');
   },
   selectElement(id, bridge) {
     bridge.send('putSelectedNode', id);
     setTimeout(() => {
-      chrome.devtools.inspectedWindow.eval('inspect(window.__REACT_DEVTOOLS_GLOBAL_HOOK__.$node)');
+      chrome.devtools.inspectedWindow.eval('inspect(window.__RAX_DEVTOOLS_GLOBAL_HOOK__.$node)');
     }, 100);
   },
   showComponentSource(globalPathToInst, globalPathToType) {

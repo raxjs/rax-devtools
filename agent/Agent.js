@@ -178,28 +178,28 @@ class Agent extends EventEmitter {
     });
     // used to "inspect node in Elements pane"
     bridge.on('putSelectedNode', id => {
-      window.__REACT_DEVTOOLS_GLOBAL_HOOK__.$node = this.getNodeForID(id);
+      window.__RAX_DEVTOOLS_GLOBAL_HOOK__.$node = this.getNodeForID(id);
     });
     // used to "view source in Sources pane"
     bridge.on('putSelectedInstance', id => {
       var node = this.elementData.get(id);
       if (node) {
-        window.__REACT_DEVTOOLS_GLOBAL_HOOK__.$type = node.type;
+        window.__RAX_DEVTOOLS_GLOBAL_HOOK__.$type = node.type;
       } else {
-        window.__REACT_DEVTOOLS_GLOBAL_HOOK__.$type = null;
+        window.__RAX_DEVTOOLS_GLOBAL_HOOK__.$type = null;
       }
       if (node && node.publicInstance) {
-        window.__REACT_DEVTOOLS_GLOBAL_HOOK__.$inst = node.publicInstance;
+        window.__RAX_DEVTOOLS_GLOBAL_HOOK__.$inst = node.publicInstance;
       } else {
-        window.__REACT_DEVTOOLS_GLOBAL_HOOK__.$inst = null;
+        window.__RAX_DEVTOOLS_GLOBAL_HOOK__.$inst = null;
       }
     });
     // used to select the inspected node ($0)
     bridge.on('checkSelection', () => {
-      var newSelected = window.__REACT_DEVTOOLS_GLOBAL_HOOK__.$0;
+      var newSelected = window.__RAX_DEVTOOLS_GLOBAL_HOOK__.$0;
       if (newSelected !== this._prevSelected) {
         this._prevSelected = newSelected;
-        var sentSelected = window.__REACT_DEVTOOLS_GLOBAL_HOOK__.$node;
+        var sentSelected = window.__RAX_DEVTOOLS_GLOBAL_HOOK__.$node;
         if (newSelected !== sentSelected) {
           this.selectFromDOMNode(newSelected, true);
         }

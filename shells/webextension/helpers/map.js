@@ -9,4 +9,4 @@
  */
 'use strict';
 
-module.exports = window.__REACT_DEVTOOLS_GLOBAL_HOOK__.nativeMap;
+module.exports = window.__RAX_DEVTOOLS_GLOBAL_HOOK__.nativeMap;

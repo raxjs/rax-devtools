@@ -19,7 +19,7 @@ function createPanelIfReactLoaded() {
     return;
   }
   chrome.devtools.inspectedWindow.eval(`!!(
-    (window.__REACT_DEVTOOLS_GLOBAL_HOOK__ && Object.keys(window.__REACT_DEVTOOLS_GLOBAL_HOOK__._renderers).length) || window.React
+    (window.__RAX_DEVTOOLS_GLOBAL_HOOK__ && Object.keys(window.__RAX_DEVTOOLS_GLOBAL_HOOK__._renderers).length) || window.React
   )`, function(pageHasReact, err) {
     if (!pageHasReact || panelCreated) {
       return;
@@ -27,7 +27,7 @@ function createPanelIfReactLoaded() {
 
     clearInterval(loadCheckInterval);
     panelCreated = true;
-    chrome.devtools.panels.create('React', '', 'panel.html', function(panel) {
+    chrome.devtools.panels.create('Rax', '', 'panel.html', function(panel) {
       var reactPanel = null;
       panel.onShown.addListener(function(window) {
         // when the user switches to the panel, check for an elements tab

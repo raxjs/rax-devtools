@@ -37,9 +37,9 @@ function getData012(internalInstance: Object): DataType {
     if (context && Object.keys(context).length === 0) {
       context = null;
     }
-  } else if (internalInstance._renderedChildren) {
+  } else if (internalInstance.__renderedChildren) {
     name = internalInstance.constructor.displayName;
-    children = childrenList(internalInstance._renderedChildren);
+    children = childrenList(internalInstance.__renderedChildren);
   } else if (typeof props.children === 'string') {
     // string children
     name = internalInstance.constructor.displayName;
@@ -47,16 +47,16 @@ function getData012(internalInstance: Object): DataType {
     nodeType = 'Native';
   }
 
-  if (!props && internalInstance._currentElement && internalInstance._currentElement.props) {
-    props = internalInstance._currentElement.props;
+  if (!props && internalInstance.__currentElement && internalInstance.__currentElement.props) {
+    props = internalInstance.__currentElement.props;
   }
 
-  if (internalInstance._currentElement) {
-    type = internalInstance._currentElement.type;
-    if (internalInstance._currentElement.key) {
-      key = String(internalInstance._currentElement.key);
+  if (internalInstance.__currentElement) {
+    type = internalInstance.__currentElement.type;
+    if (internalInstance.__currentElement.key) {
+      key = String(internalInstance.__currentElement.key);
     }
-    ref = internalInstance._currentElement.ref;
+    ref = internalInstance.__currentElement.ref;
     if (typeof type === 'string') {
       name = type;
     } else {

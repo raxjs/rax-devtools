@@ -36,10 +36,10 @@ var bridge = new Bridge(wall);
 var agent = new Agent(window);
 agent.addBridge(bridge);
 
-inject(window.__REACT_DEVTOOLS_GLOBAL_HOOK__, agent);
+inject(window.__RAX_DEVTOOLS_GLOBAL_HOOK__, agent);
 
 setupHighlighter(agent);
-setupProfiler(bridge, agent, window.__REACT_DEVTOOLS_GLOBAL_HOOK__);
+setupProfiler(bridge, agent, window.__RAX_DEVTOOLS_GLOBAL_HOOK__);
 setupHooksInspector(bridge, agent);
 
 ProfileCollector.init(agent);

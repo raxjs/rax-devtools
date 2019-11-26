@@ -43,7 +43,7 @@ function getData(internalInstance: Object): DataType {
   if (typeof internalInstance !== 'object') {
     nodeType = 'Text';
     text = internalInstance + '';
-  } else if (internalInstance._currentElement === null || internalInstance._currentElement === false) {
+  } else if (internalInstance.__currentElement === null || internalInstance.__currentElement === false) {
     nodeType = 'Empty';
   } else if (internalInstance._renderedComponent) {
     nodeType = 'NativeWrapper';
@@ -54,9 +54,9 @@ function getData(internalInstance: Object): DataType {
     if (context && Object.keys(context).length === 0) {
       context = null;
     }
-  } else if (internalInstance._renderedChildren) {
-    children = childrenList(internalInstance._renderedChildren);
-  } else if (internalInstance._currentElement && internalInstance._currentElement.props) {
+  } else if (internalInstance.__renderedChildren) {
+    children = childrenList(internalInstance.__renderedChildren);
+  } else if (internalInstance.__currentElement && internalInstance.__currentElement.props) {
     // This is a native node without rendered children -- meaning the children
     // prop is the unfiltered list of children.
     // This may include 'null' or even other invalid values, so we need to
@@ -64,7 +64,7 @@ function getData(internalInstance: Object): DataType {
     // Instead of pulling in the whole React library, we just copied over the
     // 'traverseAllChildrenImpl' method.
     // https://github.com/facebook/react/blob/240b84ed8e1db715d759afaae85033718a0b24e1/src/isomorphic/children/ReactChildren.js#L112-L158
-    const unfilteredChildren = internalInstance._currentElement.props.children;
+    const unfilteredChildren = internalInstance.__currentElement.props.children;
     var filteredChildren = [];
     traverseAllChildrenImpl(
       unfilteredChildren,
@@ -88,18 +88,18 @@ function getData(internalInstance: Object): DataType {
     }
   }
 
-  if (!props && internalInstance._currentElement && internalInstance._currentElement.props) {
-    props = internalInstance._currentElement.props;
+  if (!props && internalInstance.__currentElement && internalInstance.__currentElement.props) {
+    props = internalInstance.__currentElement.props;
   }
 
   // != used deliberately here to catch undefined and null
-  if (internalInstance._currentElement != null) {
-    type = internalInstance._currentElement.type;
-    if (internalInstance._currentElement.key) {
-      key = String(internalInstance._currentElement.key);
+  if (internalInstance.__currentElement != null) {
+    type = internalInstance.__currentElement.type;
+    if (internalInstance.__currentElement.key) {
+      key = String(internalInstance.__currentElement.key);
     }
-    source = internalInstance._currentElement._source;
-    ref = internalInstance._currentElement.ref;
+    source = internalInstance.__currentElement._source;
+    ref = internalInstance.__currentElement.ref;
     if (typeof type === 'string') {
       name = type;
       if (internalInstance._nativeNode != null) {
@@ -114,8 +114,8 @@ function getData(internalInstance: Object): DataType {
       // 0.14 top-level wrapper
       // TODO(jared): The backend should just act as if these don't exist.
       if (internalInstance._renderedComponent && (
-        internalInstance._currentElement.props === internalInstance._renderedComponent._currentElement ||
-        internalInstance._currentElement.type.isReactTopLevelWrapper
+        internalInstance.__currentElement.props === internalInstance._renderedComponent.__currentElement ||
+        internalInstance.__currentElement.type.isReactTopLevelWrapper
       )) {
         nodeType = 'Wrapper';
       }
@@ -151,8 +151,8 @@ function getData(internalInstance: Object): DataType {
     // TODO: React ART currently falls in this bucket, but this doesn't
     // actually make sense and we should clean this up after stabilizing our
     // API for backends
-    if (inst._renderedChildren) {
-      children = childrenList(inst._renderedChildren);
+    if (inst.__renderedChildren) {
+      children = childrenList(inst.__renderedChildren);
     }
   }
 
@@ -184,8 +184,8 @@ function getData(internalInstance: Object): DataType {
 }
 
 function setInProps(internalInst, forceUpdate, path: Array<string | number>, value: any) {
-  var element = internalInst._currentElement;
-  internalInst._currentElement = {
+  var element = internalInst.__currentElement;
+  internalInst.__currentElement = {
     ...element,
     props: copyWithSet(element.props, path, value),
   };

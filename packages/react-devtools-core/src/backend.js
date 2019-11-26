@@ -32,7 +32,7 @@ installGlobalHook(window);
 
 if (window.document) {
   // This shell is universal, and might be used inside a web app.
-  window.__REACT_DEVTOOLS_GLOBAL_HOOK__.on('react-devtools', agent => {
+  window.__RAX_DEVTOOLS_GLOBAL_HOOK__.on('react-devtools', agent => {
     var setupHighlighter = require('../../../frontend/Highlighter/setup');
     setupHighlighter(agent);
   });
@@ -128,7 +128,7 @@ function setupBackend(wall, resolveRNStyle) {
       agent.emit('shutdown');
     }
     // This appears necessary for plugin cleanup.
-    window.__REACT_DEVTOOLS_GLOBAL_HOOK__.emit('shutdown');
+    window.__RAX_DEVTOOLS_GLOBAL_HOOK__.emit('shutdown');
     bridge = null;
     agent = null;
     console.log('closing devtools');
@@ -145,7 +145,7 @@ function setupBackend(wall, resolveRNStyle) {
     setupRNStyle(bridge, agent, resolveRNStyle);
   }
 
-  setupProfiler(bridge, agent, window.__REACT_DEVTOOLS_GLOBAL_HOOK__);
+  setupProfiler(bridge, agent, window.__RAX_DEVTOOLS_GLOBAL_HOOK__);
   setupHooksInspector(bridge, agent);
 
   var _connectTimeout = setTimeout(() => {
@@ -156,7 +156,7 @@ function setupBackend(wall, resolveRNStyle) {
     if (!agent) {
       return;
     }
-    inject(window.__REACT_DEVTOOLS_GLOBAL_HOOK__, agent);
+    inject(window.__RAX_DEVTOOLS_GLOBAL_HOOK__, agent);
     clearTimeout(_connectTimeout);
   });
 

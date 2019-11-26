@@ -21,7 +21,7 @@ function welcome(evt) {
   }
 
   window.removeEventListener('message', welcome);
-  setup(window.__REACT_DEVTOOLS_GLOBAL_HOOK__);
+  setup(window.__RAX_DEVTOOLS_GLOBAL_HOOK__);
 }
 
 function setup(hook) {

@@ -12,7 +12,7 @@
 
 /* globals chrome */
 
-// Inject a `__REACT_DEVTOOLS_GLOBAL_HOOK__` global so that React can detect that the
+// Inject a `__RAX_DEVTOOLS_GLOBAL_HOOK__` global so that React can detect that the
 // devtools are installed (and skip its suggestion to install the devtools).
 
 var installGlobalHook = require('../../../backend/installGlobalHook.js');
@@ -48,7 +48,7 @@ window.addEventListener('pageshow', function(evt) {
 });
 
 var detectReact = `
-window.__REACT_DEVTOOLS_GLOBAL_HOOK__.on('renderer', function(evt) {
+window.__RAX_DEVTOOLS_GLOBAL_HOOK__.on('renderer', function(evt) {
   window.postMessage({
     source: 'react-devtools-detector',
     reactBuildType: evt.reactBuildType,
@@ -56,10 +56,10 @@ window.__REACT_DEVTOOLS_GLOBAL_HOOK__.on('renderer', function(evt) {
 });
 `;
 var saveNativeValues = `
-window.__REACT_DEVTOOLS_GLOBAL_HOOK__.nativeObjectCreate = Object.create;
-window.__REACT_DEVTOOLS_GLOBAL_HOOK__.nativeMap = Map;
-window.__REACT_DEVTOOLS_GLOBAL_HOOK__.nativeWeakMap = WeakMap;
-window.__REACT_DEVTOOLS_GLOBAL_HOOK__.nativeSet = Set;
+window.__RAX_DEVTOOLS_GLOBAL_HOOK__.nativeObjectCreate = Object.create;
+window.__RAX_DEVTOOLS_GLOBAL_HOOK__.nativeMap = Map;
+window.__RAX_DEVTOOLS_GLOBAL_HOOK__.nativeWeakMap = WeakMap;
+window.__RAX_DEVTOOLS_GLOBAL_HOOK__.nativeSet = Set;
 `;
 
 var js = (

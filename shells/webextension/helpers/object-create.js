@@ -10,4 +10,4 @@
  */
 'use strict';
 
-module.exports = window.__REACT_DEVTOOLS_GLOBAL_HOOK__.nativeObjectCreate;
+module.exports = window.__RAX_DEVTOOLS_GLOBAL_HOOK__.nativeObjectCreate;

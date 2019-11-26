@@ -27,7 +27,7 @@ if (!window.IS_TRAVIS) {
 var React = require('./v0.12/node_modules/react');
 var {EventEmitter} = require('events');
 
-var renderers = window.__REACT_DEVTOOLS_GLOBAL_HOOK__._renderers;
+var renderers = window.__RAX_DEVTOOLS_GLOBAL_HOOK__._renderers;
 var renderer = renderers[Object.keys(renderers)[0]];
 
 function tracker(hook) {

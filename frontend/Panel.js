@@ -231,8 +231,8 @@ class Panel extends React.Component<Props, State> {
     setTimeout(() => {
       invariant(this.props.showComponentSource, 'cannot view source if props.showComponentSource is not supplied');
       this.props.showComponentSource(
-        '__REACT_DEVTOOLS_GLOBAL_HOOK__.$inst',
-        '__REACT_DEVTOOLS_GLOBAL_HOOK__.$type'
+        '__RAX_DEVTOOLS_GLOBAL_HOOK__.$inst',
+        '__RAX_DEVTOOLS_GLOBAL_HOOK__.$type'
       );
     }, 100);
   }
@@ -360,7 +360,7 @@ class Panel extends React.Component<Props, State> {
       // and communicate with the bridge.
       return (
         <div style={loadingStyle(theme)}>
-          <h2>Connecting to React…</h2>
+          <h2>Connecting to Rax…</h2>
           <br />
           {this.state.showTroubleshooting && (
             <a style={{

@@ -17,7 +17,7 @@ import type {Hook} from './types';
  *       function in some places and inject the source into the page.
  */
 function installGlobalHook(window: Object) {
-  if (window.__REACT_DEVTOOLS_GLOBAL_HOOK__) {
+  if (window.__RAX_DEVTOOLS_GLOBAL_HOOK__) {
     return;
   }
   function detectReactBuildType(renderer) {
@@ -221,7 +221,7 @@ function installGlobalHook(window: Object) {
       }
     },
   });
-  Object.defineProperty(window, '__REACT_DEVTOOLS_GLOBAL_HOOK__', {
+  Object.defineProperty(window, '__RAX_DEVTOOLS_GLOBAL_HOOK__', {
     value: (hook : Hook),
   });
 }

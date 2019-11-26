@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
-  "name": "React Developer Tools",
-  "description": "Adds React debugging tools to the Chrome Developer Tools.",
+  "name": "Rax Developer Tools",
+  "description": "Adds Rax debugging tools to the Chrome Developer Tools.",
   "version": "3.6.0",
 
   "minimum_chrome_version": "49",

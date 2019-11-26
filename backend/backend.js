@@ -10,7 +10,7 @@
  *
  * This is the chrome devtools
  *
- * 1. Devtools sets the __REACT_DEVTOOLS_GLOBAL_HOOK__ global.
+ * 1. Devtools sets the __RAX_DEVTOOLS_GLOBAL_HOOK__ global.
  * 2. React (if present) calls .inject() with the internal renderer
  * 3. Devtools sees the renderer, and then adds this backend, along with the Agent
  *    and whatever else is needed.
